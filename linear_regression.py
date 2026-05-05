@@ -25,9 +25,10 @@ def gradient_descent(m_curr, b_curr, points, lr):
         X = points.iloc[i].x
         Y = points.iloc[i].y
 
+        error = Y - (m_curr * X + b_curr)
 
-        m_gradient += float(-(2/n))* float(float(X)*(float(Y)-float(m_curr)  * float(X) + float(b_curr)))
-        b_gradient += float(-(2/n)) * float(float(Y)*(float(Y)-float(m_curr)  * float(X) + float(b_curr)))
+        m_gradient += -(2/n) * X * error
+        b_gradient += -(2/n) * error
     m = m_curr - m_gradient * lr
     b = b_curr - b_gradient * lr
 
